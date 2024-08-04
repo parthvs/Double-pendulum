@@ -1,6 +1,14 @@
 import math
 import pygame
 
+
+length_a = int(input("Enter length 1 "))
+length_b = int(input("Enter lentgh 2 "))
+
+initial_theta_a = math.pi / 4
+initial_theta_b = math.pi / 2
+
+
 pygame.init()
 screen = pygame.display.set_mode((800, 600), pygame.RESIZABLE)
 
@@ -10,10 +18,7 @@ g = 980
 pivot_x = 400
 pivot_y = 200
 pivot_xy = (pivot_x, pivot_y)
-initial_theta_a = math.pi / 4
-initial_theta_b = 3 * math.pi /4
-length_a = 100
-length_b = 150
+
 start_time = pygame.time.get_ticks()
 omega_a = (g / length_a) ** 0.5
 omega_b = (g / length_b) ** 0.5
@@ -33,7 +38,7 @@ def draw_pendulum_a(pivot_xy, theta, length):
     line_start = pivot_xy
     line_end = bob_xy
     pygame.draw.line(screen, red, line_start, line_end, 2)
-    pygame.draw.circle(screen, blue, bob_xy, 20)  # bob
+    pygame.draw.circle(screen, blue, bob_xy, 15)  # bob
     return bob_xy
 
 trail_surface = pygame.Surface((800, 600), pygame.SRCALPHA)
@@ -61,9 +66,9 @@ while running:
     bob1_history.append(bob1_xy)
     bob2_history.append(bob2_xy)
     
-    if len(bob1_history) >= 5000:
+    if len(bob1_history) >= 2000:
         bob1_history.pop(0)
-    if len(bob2_history) >= 5000:
+    if len(bob2_history) >= 2000:
         bob2_history.pop(0)
 
     # Draw the trail
