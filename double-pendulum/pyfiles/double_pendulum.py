@@ -5,7 +5,7 @@ import pygame
 length_a = int(input("Enter length 1 "))
 length_b = int(input("Enter lentgh 2 "))
 
-initial_theta_a = math.pi / 4
+initial_theta_a = math.pi 
 initial_theta_b = math.pi / 2
 
 
