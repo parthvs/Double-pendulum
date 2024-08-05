@@ -2,7 +2,7 @@ import pygame
 import math
 import random
 
-error = float(input("Enter error"))
+error = random.uniform(0,0.001)
 
 pygame.init()
 
@@ -13,10 +13,10 @@ pygame.display.set_caption("Triple Double Pendulum Simulation")
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 WHITE , BLACK = BLACK , WHITE
-L1, L2 = 120, 150
-m1, m2 = 40, 40
-g = 9.8
-dt = 0.1
+L1, L2 = 145,150
+m1, m2 = 10,10
+g = 9.86
+dt = 0.15
 origin = (width // 2, (height // 4) -100)
 
 bob1_history = []
@@ -187,7 +187,7 @@ while running:
     setls1x.append(set1x  - 0)
     setls1y.append(set1y + 300)
     
-    if len(setls1x) >5000:
+    if len(setls1x) >2000:
       setls1x.pop(0)
       setls1y.pop(0)
     
@@ -202,7 +202,7 @@ while running:
     setls2x.append(set2x+ 220)
     setls2y.append(set2y + 300)
     
-    if len(setls2x) >5000:
+    if len(setls2x) >2000:
       setls2x.pop(0)
       setls2y.pop(0)
     
@@ -217,7 +217,7 @@ while running:
     setls3x.append(set3x+ 440)
     setls3y.append(set3y + 300)
     
-    if len(setls3x) >5000:
+    if len(setls3x) >2000:
       setls3x.pop(0)
       setls3y.pop(0)
     
