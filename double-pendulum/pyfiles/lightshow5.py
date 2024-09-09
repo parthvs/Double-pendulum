@@ -1,6 +1,6 @@
 import pygame
 import math
-
+import random
 
 pygame.init()
 
@@ -12,11 +12,12 @@ pygame.display.set_caption("Double Pendulum Simulation")
 running = True
 clock = pygame.time.Clock()
 
-theta1, theta2 = 90,90.0001
-theta3, theta4 = 90,90.0002
+error = random.uniform(0,0.0001)
+theta1, theta2 = 90,90 + error
+theta3, theta4 = 90,90 + error + 0.00001
 theta5, theta6 = 90,90
-theta7, theta8 = 90,89.9999
-theta9, theta10= 90,89.9998
+theta7, theta8 = 90,90 - error
+theta9, theta10= 90,90 - error - 0.00001
 # pend1
 r1, r2 = 200, 200
 m1, m2 = 15, 15
@@ -80,7 +81,7 @@ trace5_color = (255,255,0)
 pivot_x, pivot_y = 400,100
 pivot_xy = (pivot_x, pivot_y)
 g = 9.8
-dt = 0.05
+dt = 0.1
 
 def draw_pend(theta1,theta2,r1,r2,trace,tc):
     x1 = pivot_x + r1 * math.sin(theta1)
@@ -117,13 +118,7 @@ def calculate(theta1,theta2,a1,a2,v1,v2):
     return(theta1,theta2,a1,a2,v1,v2)
     
 while running:
-    global a1,a2,v1,v2,trace1
-    global a3,a4,v3,v4,trace2
-    global a5,a6,v5,v6,trace3
-    global a7,a8,v7,v8,trace4
-    global a9,a10,v9,v10,trace5
-
-    
+       
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
